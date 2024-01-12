@@ -4,8 +4,8 @@ const Square = ({ value, onSquareClick }) => {
   return <button className="square" onClick={onSquareClick}>{value}</button>
 }
 
-function Board({ xIsNext, squares, onPlay }) {
-  function handleClick(i) {
+const Board = ({ xIsNext, squares, onPlay }) => {
+  const handleClick = (i) => {
     if (squares[i] || calculateWinner(squares)) {
       return
     }
@@ -48,19 +48,19 @@ function Board({ xIsNext, squares, onPlay }) {
   )
 }
 
-export default function Game() {
+  const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)])
   const [currentMove, setCurrentMove] = useState(0)
   const xIsNext = currentMove % 2 === 0
   const currentSquares = history[currentMove]
 
-  function handlePlay(nextSquares) {
+  const handlePlay = (nextSquares) => {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]
     setHistory(nextHistory)
     setCurrentMove(nextHistory.length - 1)
   }
 
-  function jumpTo(nextMove) {
+  const jumpTo = (nextMove) => {
     setCurrentMove(nextMove)
   }
 
@@ -90,7 +90,7 @@ export default function Game() {
   )
 }
 
-function calculateWinner(squares) {
+const calculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -110,3 +110,5 @@ function calculateWinner(squares) {
   }
   return null
 }
+
+export default Game
