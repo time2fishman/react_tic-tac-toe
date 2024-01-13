@@ -37,15 +37,13 @@ const Game = () => {
       <header>
         <h1>Tic-Tac-Toe</h1>
       </header>
-      <main>
-        <div className="game">
-          <div className="game-board">
+      <main className="game">
+          <section className="game-board">
             <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
-          </div>
-          <div className="game-info">
+          </section>
+          <section className="game-info">
             <ol>{moves}</ol>
-          </div>
-        </div>
+          </section>
       </main>
     </>
   )
